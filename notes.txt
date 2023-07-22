@@ -1,0 +1,7 @@
+training:
+tested with:
+batch size: 8,16
+epochs:1,5
+freeze layers: none, backbone
+
+change anchors? (as the previous ones will be from coco clustering)
