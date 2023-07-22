@@ -1,10 +1,10 @@
 train_data_params = {
     'standard_train_data' : {'subdir' : 'Dataset_standard/',
-                'nimages' : [15000, 4000, 0],
+                'nimages' : [2000, 1000, 0],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
-                'image_w' : 620,
-                'image_h' : 620,
+                'image_w' : 640,
+                'image_h' : 640,
                 'image_d' : 1,
                 'label_list' : ['Spot'],
                 'snr_range' : [4,25],
@@ -15,8 +15,8 @@ train_data_params = {
                 'density_range' : [0.01, 0.12],
                 'impurity_type' : "None"},
                 
-                'big_std_train_data' : {'subdir' : 'Dataset_standard/',
-                'nimages' : [15000, 4000, 0],
+                'big_std_train_data' : {'subdir' : 'Dataset_big_std/',
+                'nimages' : [2000, 1000, 0],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
                 'image_w' : 640,
@@ -32,11 +32,11 @@ train_data_params = {
                 'impurity_type' : "None"},
 
                 'impurities_train_data' : {'subdir' : 'Dataset_impurities/',
-                        'nimages' : [15000, 4000, 0],                        
+                        'nimages' : [2000, 1000, 0],                        
                         'folders' : ['train', 'valid', 'test'],
                         # image parameters
-                        'image_w' : 620,
-                        'image_h' : 620,
+                        'image_w' : 640,
+                        'image_h' : 640,
                         'image_d' : 1,
                         'label_list' : ['Spot'],
                         'snr_range' : [4,25],
@@ -60,7 +60,7 @@ train_data_params = {
 
 
 test_data_params = {
-    '1. Standard' : {'subdir' : 'Dataset_standard/1. Standard/',
+    '1. Standard' : {'subdir' : 'Dataset_standard/test/1_standard/',
                 'nimages' : [0,0,1000],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
@@ -76,7 +76,7 @@ test_data_params = {
                 'density_range' : [0.018, 0.022],
                 'impurity_type' : "None"},
 
-                '2. Density 10%' : {'subdir' : 'Dataset_standard/2. Density 10%',
+                '2. Density 10%' : {'subdir' : 'Dataset_standard/test/2_density_10',
                 'nimages' : [0,0,1000],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
@@ -92,7 +92,7 @@ test_data_params = {
                 'density_range' : [0.098, 0.12],
                 'impurity_type' : "None"},
 
-                '3. Big particle std' : {'subdir' : 'Dataset_big_std/3. Big particle std/',
+                '3. Big particle std' : {'subdir' : 'Dataset_big_std/test/3_big_particle_std/',
                 'nimages' : [0,0,1000],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
@@ -108,7 +108,7 @@ test_data_params = {
                 'density_range' : [0.018, 0.022],
                 'impurity_type' : "None"},
 
-                '4.1 Low SNR' : {'subdir' : 'Dataset_standard/4.1 Low SNR/',
+                '4.1 Low SNR' : {'subdir' : 'Dataset_standard/test/4_1_low_snr/',
                 'nimages' : [0,0,1000],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
@@ -124,7 +124,7 @@ test_data_params = {
                 'density_range' : [0.018, 0.022],
                 'impurity_type' : "None"},
 
-                '4.2 High SNR' : {'subdir' : 'Dataset_standard/4.2 High SNR/',
+                '4.2 High SNR' : {'subdir' : 'Dataset_standard/test/4_2_high_snr/',
                 'nimages' : [0,0,1000],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
@@ -140,7 +140,7 @@ test_data_params = {
                 'density_range' : [0.018, 0.022],
                 'impurity_type' : "None"},
 
-                '5.1 Including impurities (circular) different in size' : {'subdir' : 'Dataset_impurities/5.1 Including impurities (circular) different in size/',
+                '5.1 Including impurities (circular) different in size' : {'subdir' : 'Dataset_impurities/test/5_1_including_impurities_circular_different_in_size/',
                 'nimages' : [0,0,1000],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
@@ -161,7 +161,7 @@ test_data_params = {
                         'diameter_std_impurity_circle' : 1,
                         },
 
-                '5.2 Including impurities (circular) close in size' : {'subdir' : 'Dataset_impurities/5.2 Including impurities (circular) close in size/',
+                '5.2 Including impurities (circular) close in size' : {'subdir' : 'Dataset_impurities/test/5_2_including_impurities_circular_close_in_size/',
                 'nimages' : [0,0,1000],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
@@ -182,7 +182,7 @@ test_data_params = {
                         'diameter_std_impurity_circle' : 1,
                         },
 
-                '5.3 Including impurities (square) same in size' : {'subdir' : 'Dataset_impurities/5.3 Including impurities (square) same in size/',
+                '5.3 Including impurities (square) same in size' : {'subdir' : 'Dataset_impurities/test/5_3_including_impurities_square_same_in_size/',
                 'nimages' : [0,0,1000],
                 'folders' : ['train', 'valid', 'test'],
                 # image parameters
@@ -204,5 +204,3 @@ test_data_params = {
                         },
 
 }
-
-
