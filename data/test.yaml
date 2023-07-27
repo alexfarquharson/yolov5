@@ -1,0 +1,30 @@
+# names:
+# - Spot
+# nc: 1
+# roboflow:
+#   license: CC BY 4.0
+#   project: fluorescent_images
+#   url: https://universe.roboflow.com/fluorescentimages/fluorescent_images/dataset/1
+#   version: 1
+#   workspace: fluorescentimages
+# test: ../test/images
+# train: fluorescent_images-1/train/images
+# val: fluorescent_images-1/valid/images
+
+
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: data_creation/Dataset_test  # dataset root dir
+train: images/test
+val: images/test  # val images (relative to 'path') 128 images
+test:  # test images (optional)
+
+# Classes
+names:
+  0: Spot
+
+
+# Download script/URL (optional)
+# download: https://universe.roboflow.com/fluorescentimages/fluorescent_images/dataset/1
+
+
+

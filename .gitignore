@@ -255,3 +255,9 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+data_creation/Dataset_standard/*
+data_creation/Dataset_test/*
+data_creation/Dataset_impurities/*
+data_creation/Dataset_big_std/*
+.jpg

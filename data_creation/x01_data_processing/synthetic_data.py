@@ -14,7 +14,7 @@ from xml_writer import Writer # Writes XML files in the Pascal VOC format
 import xml.etree.ElementTree as ET
 import os
 
-from data_configs import train_data_params
+from data_configs import train_data_params, test_data_params
 
 class SpotObject:
     '''
@@ -356,10 +356,10 @@ def convert_xml_to_txt(xml_file, txt_file):
 
             width = xmax - xmin
             height = ymax - ymin
-            x_centre = (xmin + width / 2) / 620
-            y_centre = (ymin + height / 2) / 620
+            x_centre = (xmin + width / 2) / 640
+            y_centre = (ymin + height / 2) / 640
 
-            line = f"0 {x_centre:.6f} {y_centre:.6f} {width/620:.6f} {height/620:.6f}\n"
+            line = f"0 {x_centre:.6f} {y_centre:.6f} {width/640:.6f} {height/640:.6f}\n"
             f.write(line)
 
 
@@ -373,6 +373,7 @@ def convert_xml_files_in_directory(xml_directory, txt_directory):
             base_name = os.path.splitext(file_name)[0]
             txt_file = os.path.join(txt_directory, f"{base_name}.txt")
             convert_xml_to_txt(xml_file, txt_file)
+
 
 def create_images_wrapper(subdir,
                         nimages,
@@ -442,6 +443,9 @@ def create_images_wrapper(subdir,
 
             # save image 
             fname = i_dir + 'image_{:04d}.jpg'.format(i,2)
+            
+            if os.path.exists(fname):
+                os.remove(fname)
             plt.imsave(fname, image, cmap='gray')
 
             # create annotations xml
@@ -464,10 +468,59 @@ def create_images_wrapper(subdir,
                     impurity_size_mean = {'Circle': diameter_mean_impurity_circle, "Rectangle": length_mean_impurity_rectangle},
                     impurity_size_std = {'Circle': diameter_std_impurity_circle, "Rectangle": length_std_impurity_rectangle})
 
-        
+
+def recreate_labels_wrapper(subdir,
+                        nimages,
+                        folders,
+                        # image parameters
+                        image_w,
+                        image_h,
+                        image_d,
+                        label_list,
+                        snr_range,
+                        offset,
+                        diameter_mean,
+                        diameter_std,
+                        luminosity_range,
+                        density_range,
+                        impurity_type,
+                        
+                        circle_impurities = False,
+                        label_list_impurity_circle = None,
+                        density_range_impurity_circle =  None,
+                        diameter_mean_impurity_circle =  None,
+                        diameter_std_impurity_circle =  None,
+                        rectangle_impurities = False,
+                        label_list_impurity_rectangle = None,
+                        density_range_impurity_rectangle = None,
+                        length_mean_impurity_rectangle = None,
+                        length_std_impurity_rectangle = None):
+    
+    #create dirs
+    if not os.path.exists(subdir):
+        os.makedirs(subdir)
+    for i, prefix in enumerate(folders):
+
+        i_dir = subdir + 'images/' + prefix + "/"
+        if not os.path.exists(i_dir):
+            os.makedirs(i_dir)
+        a_dir = subdir + 'temp/' + prefix + "/"
+        if not os.path.exists(a_dir):
+            os.makedirs(a_dir)
+        t_dir = subdir + 'labels/' + prefix + "/"
+        if not os.path.exists(t_dir):
+            os.makedirs(t_dir)
+
+        convert_xml_files_in_directory(a_dir, t_dir)
+
+
 if __name__ == "__main__":
 
     # create data as per config
     for key, value in train_data_params.items():
+        print(key)
+        create_images_wrapper(**value)
+
+    for key, value in test_data_params.items():
         print(key)
         create_images_wrapper(**value)
