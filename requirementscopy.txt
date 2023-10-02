@@ -37,7 +37,7 @@ pywin32==306
 PyYAML==6.0
 pyzmq==25.1.0
 requests==2.31.0
-scipy==1.7.3
+scipy==1.11.3
 seaborn==0.12.2
 six==1.16.0
 smmap==5.0.0
